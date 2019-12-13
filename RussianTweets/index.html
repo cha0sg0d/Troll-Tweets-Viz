@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Word Cloud</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Courier+Prime&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<h1>How the Russian Tweets Divide Us</h1>
+		<h2>Top ten word pairings used by Russian Trolls from July 2015 to December 2017</h2>
+		<div class="row">
+		<div class="col-md-6">
+			Left Trolls
+			<div id="left-trolls"></div>
+		</div>
+		<div class="col-md-6">
+			Right Trolls
+			<div id="right-trolls"></div>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			<div id="date"></div>
+			<button id ="backbutt" type="button" onclick="decreaseMonth()">Back</button>
+			<button id="butt" type="button" onclick="increaseMonth()">Next</button> <br><br>
+			<a href="https://github.com/fivethirtyeight/russian-troll-tweets/">Data Source</a> 
+			</div>
+		</div>
+	</div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/d3.js"></script>
+<script type="text/javascript" src="js/d3.layout.cloud.js"></script>
+
+<!-- ARRAY FUNCTIONS -->
+<script src="https://d3js.org/d3-array.v2.min.js"></script>
+
+<!-- REQUIRE -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/d3-require@1"></script>
+ -->
+<!-- SELECTION -->
+<script src="https://d3js.org/d3-selection.v1.min.js"></script>
+
+<!-- SCALE -->
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<!-- MAIN --> 
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+body {
+  font-family: 'Courir Prime', monospace;
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 100;
+  margin-top: 30px;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.container-fluid {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-md-6{
+  font-family: 'Courir Prime', monospace;
+  font-size: 18px;
+  padding: 20px;
+}
+
+#left-trolls {
+  position: absolute;
+  text-align: center;
+/*  border: 1px solid black;
+*/}
+
+#right-trolls {
+/*  border: 1px solid black;
+*/}
+
+#date {
+  font-family: 'Courir Prime', monospace;
+  font-weight: bold;
+  font-size: 24px;
+}
