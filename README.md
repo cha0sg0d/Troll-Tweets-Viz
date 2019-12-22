@@ -6,4 +6,6 @@ To run this code, download the [RussianTweets](https://github.com/tony-goss/Trol
 
 Read our summary and write up of the visualization [here](https://github.com/tony-goss/Troll-Tweets-Viz/blob/master/RussianTweets/WriteUp.pdf)
 
-Here is a live ![demo](tweet-final-demo.gif)
+# Here is a live demo: 
+
+![demo](tweet-final-demo.gif)
