@@ -12,9 +12,6 @@ var formatDate = d3.utcFormat("%B %Y");
 var prev;
 var next;
 
-// var left = document.getElementById("left-trolls")
-// left.onmouseover = mouseover()
-
 //LEFT LIST
 var left_list = d3.select("#left-trolls").append("svg")
     .attr("width", width)
@@ -26,13 +23,23 @@ var right_list = d3.select("#right-trolls").append("svg")
     .attr("width", width)
     .attr("height", height)
 
+//DATE
 var date = d3.select("#date").append("text")
+
+//TWEET TOOLTIP
+var L_tooltip = d3.select("#left-trolls").append("div")
+	  .attr("class", "tooltip")
+	  .style("opacity", 0)
+
+var R_tooltip = d3.select("#right-trolls").append("div")
+	  .attr("class", "tooltip")
+	  .style("opacity", 0)
 
 var LL = left_list.append("g")
 var RL = right_list.append("g")
 
-var L_color_scale = d3.scaleLinear().domain([10, 300]).range(['blue', 'darkblue'])
-var R_color_scale = d3.scaleLinear().domain([10, 3000]).range(['red', 'darkred'])
+var L_color_scale = d3.scaleLinear().domain([10, 300]).range(['blue', 'blue'])
+var R_color_scale = d3.scaleLinear().domain([10, 3000]).range(['red', 'red'])
 
 //ANIMATION
 var month = 0;
@@ -61,12 +68,48 @@ function clearWords() {
 	RL.selectAll("*").remove()
 }
 
+function mouseout(){
+	L_tooltip
+		.style("opacity", 0)
+
+	R_tooltip
+		.style("opacity", 0)
+}
+
+function L_mouseover(){
+	var word = this.textContent
+	var y_value = this.getAttribute("y")
+	var x_value = this.getAttribute("x")
+	
+	//SEND WORD TO RETRIEVE TWEET
+	console.log(x_value)
+
+	L_tooltip
+	    .style("opacity", .9)
+	    .html(word)
+	    .style("left", function() { return x_value + "px"})
+	    .style("top", function() { return y_value + "px"}) 
+}
+
+function R_mouseover(){
+	var word = this.textContent
+	var y_value = this.getAttribute("y")
+	var x_value = this.getAttribute("x")
+	
+	//SEND WORD TO RETRIEVE TWEET
+	console.log(y_value)
+
+	R_tooltip
+	    .style("opacity", .9)
+	    .html(word)
+	    .style("left", function() { return (x_value - 150) + "px"})
+	    .style("top", function() { return (y_value) + "px"}) 
+}
+
 function renderWords(month) {
 
 	//LEFT KEY FRAMES
 	for(var i in leftKeyFrames[month][1].slice(0, 10)) {
-		// console.log("curr value:", leftKeyFrames[month][1][i])
-		// console.log("previous value:", prev.get(leftKeyFrames[month][1][i]))
 	    var value = leftKeyFrames[month][1][i].value;
 	    LL.append("text")
 	    .attr("x", 280)
@@ -85,8 +128,10 @@ function renderWords(month) {
 	        return L_color_scale(value)
 	    })
 	    .attr("text-anchor", "middle")
-
+	    .on("mouseover", L_mouseover)
+	    .on("mouseout", mouseout)
 	}
+
 
 	//RIGHT KEY FRAMES
 	for(i in rightKeyFrames[month][1].slice(0, 10)) {
@@ -103,6 +148,8 @@ function renderWords(month) {
 	        return R_color_scale(value)
 	    })
 	    .attr("text-anchor", "middle")
+	    .on("mouseover", R_mouseover)
+	    .on("mouseout", mouseout)
 	}
     
     //CHANGE DATE AT BOTTOM
@@ -110,12 +157,6 @@ function renderWords(month) {
         .text(formatDate(rightKeyFrames[month][0]))
         .attr("text-align", "center")
 }
-
-function mouseover() {
-	console.log("hello")
-}
-
-
 
 
 //LOAD AND PROCESS DATA
